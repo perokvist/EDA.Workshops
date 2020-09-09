@@ -28,9 +28,8 @@ namespace Login.Tests
     public static class LoginRules
     {
         public static bool ToManyAttempts(this IEnumerable<IEvent> events, Func<DateTime> timeProvider)
-            => events
+        => events
             .OfType<AuthenticationAttemptFailed>()
-            //TODO
-            .Count() <= 3;
+            .Count(auth => (timeProvider() - auth.Time).TotalMinutes < 15) >= 3;
     }
 }
