@@ -59,18 +59,20 @@ namespace Patitioning.Tests
     }
 
     public static class EventStoreRoomExtensions
-    { 
-            public static string[] GetCheckedInRoomIds(this EventStore store)
-            => store.Read(0, int.MaxValue)
-                .Select(x => x.Content)
-				.OfType<IRoomEvent>()
-				.GroupBy(o => o.RoomId)
-				.Where(o => o.Last() is RoomCheckedIn)
-				.Select(o => o.Key)
-				.ToArray();
+    {
+        public static string[] GetCheckedInRoomIds(this EventStore store)
+          => GetAllRoomIdsOfType<RoomCheckedIn>(store);
 
         public static string[] GetRoomsToClean(this EventStore store)
-            => Array.Empty<string>();
+          => GetAllRoomIdsOfType<RoomCleaningRequested>(store);
 
+        private static string[] GetAllRoomIdsOfType<T>(EventStore store) where T : IRoomEvent
+        {
+            return store.Read(0, long.MaxValue)
+              .Select(x => x.Content)
+              .OfType<T>()
+              .Select(r => r.RoomId)
+              .ToArray();
+        }
     }
 }
