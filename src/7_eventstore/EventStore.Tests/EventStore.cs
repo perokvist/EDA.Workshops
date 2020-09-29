@@ -32,10 +32,10 @@ namespace Subscription.Tests
         {
             var lastVersion = currentValue.Any() ? currentValue.Last().EventVersion : 0;
 
-            if (false) //TODO fix
+            if (concurreny.check && lastVersion > concurreny.version) //TODO fix
                 throw new DBConcurrencyException($"wrong version - expected {concurreny.version} but was {lastVersion} - in stream {streamName}");
 
-            var duplicates = Array.Empty<EventData>(); //TODO fix
+            var duplicates = currentValue.Join(events, i => i.EventId, j => j.EventId, (k, l) => k);
             if (duplicates.Any())
                 throw new Exception($"Tried to append duplicates in stream - {streamName}. {string.Join(',', duplicates.Select(d => $"{d.EventName} - {d.EventId}"))}");
 
