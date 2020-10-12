@@ -58,3 +58,4 @@ namespace Patitioning.Tests
             => events.ToList().ForEach(e => store.Append(e.GetType().Name, e));
     }
 }
+
