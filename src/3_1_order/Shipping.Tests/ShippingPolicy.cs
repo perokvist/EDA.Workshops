@@ -15,7 +15,7 @@ namespace Shipping.Tests
 
     public class Order
     {
-        public bool Payed;
+        public bool Paid;
         public bool Packed;
 
         public Order When(IEvent @event) => this;

@@ -21,7 +21,7 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void PayedAndPickedIssueShip()
+        public void PaidAndPickedIssueShip()
         {
             //Given
             var state = new IEvent[] {
@@ -37,7 +37,7 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void PickedAndPayedIssueShip()
+        public void PickedAndPaidIssueShip()
         {
             //Given
             var state = new IEvent[] {

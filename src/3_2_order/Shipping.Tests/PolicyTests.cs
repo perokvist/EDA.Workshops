@@ -22,7 +22,7 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void PayedAndPickedShip()
+        public void PaidAndPickedShip()
         {
             var app = new App();
 
@@ -37,7 +37,7 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void PickedAndPayedIssueShip()
+        public void PickedAndPaidIssueShip()
         {
             var app = new App();
 
