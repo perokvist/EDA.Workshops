@@ -11,7 +11,7 @@ namespace Shipping.Tests
         public IDictionary<string, string> Meta { get; set; }
     }
 
-    public class PaymentRecieved : IEvent
+    public class PaymentReceived : IEvent
     {
         public string SourceId => "payment.order";
         public IDictionary<string, string> Meta { get; set; }

@@ -25,7 +25,7 @@ namespace Shipping.Tests
         {
             //Given
             var state = new IEvent[] {
-                new PaymentRecieved()
+                new PaymentReceived()
             }.Rehydrate<Order>();
 
             //When
@@ -45,7 +45,7 @@ namespace Shipping.Tests
             }.Rehydrate<Order>();
 
             //When
-            var cmd = ShippingPolicy.When(new PaymentRecieved(), state);
+            var cmd = ShippingPolicy.When(new PaymentReceived(), state);
 
             //Then
             Assert.NotNull(cmd);

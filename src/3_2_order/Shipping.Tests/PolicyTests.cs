@@ -27,7 +27,7 @@ namespace Shipping.Tests
             var app = new App();
 
             //Given
-            app.Given(new PaymentRecieved());
+            app.Given(new PaymentReceived());
 
             //When
             app.When(new GoodsPicked());
@@ -45,7 +45,7 @@ namespace Shipping.Tests
             app.Given(new GoodsPicked());
 
             //When
-            app.When(new PaymentRecieved());
+            app.When(new PaymentReceived());
 
             //Then
             app.Then(events => Assert.True(events.OfType<GoodsShipped>().Any()));
