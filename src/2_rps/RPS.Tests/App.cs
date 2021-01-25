@@ -86,7 +86,7 @@ namespace RPS.Tests
     {
         public Guid GameId { get; set; }
         public string Winner { get; set; }
-        public string Looser { get; set; }
+        public string Loser { get; set; }
         public int Round { get; set; }
         public string SourceId => GameId.ToString();
         public IDictionary<string, string> Meta { get; set; }
@@ -107,7 +107,7 @@ namespace RPS.Tests
         public Guid GameId { get; set; }
         public int Rounds { get; set; }
         public string Winner { get; set; }
-        public string Looser { get; set; }
+        public string Loser { get; set; }
         public string SourceId => GameId.ToString();
         public IDictionary<string, string> Meta { get; set; }
     }
