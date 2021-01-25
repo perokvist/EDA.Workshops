@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace App.Tests
 {
@@ -63,23 +62,17 @@ namespace App.Tests
     public class RoundStarted : IEvent
     {
         public Guid GameId { get; set; }
-
         public int Round { get; set; }
-
         public string SourceId => GameId.ToString();
         public Guid EventId { get; } = Guid.NewGuid();
-
     }
 
     public class GameStarted : IEvent
     {
         public Guid GameId { get; set; }
-
         public string PlayerId { get; set; }
-
         public string SourceId => GameId.ToString();
         public Guid EventId { get; } = Guid.NewGuid();
-
     }
 
     public enum GameStatus
@@ -170,7 +163,6 @@ namespace App.Tests
         Paper = 20,
         Scissors = 30
     }
-
 
     public interface IEvent
     {

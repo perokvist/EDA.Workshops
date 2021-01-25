@@ -4,7 +4,6 @@ using System.Text;
 
 namespace Login.Tests
 {
-
     public interface IEvent
     {
         string SourceId { get; }

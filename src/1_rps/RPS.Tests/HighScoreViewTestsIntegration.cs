@@ -37,18 +37,18 @@ namespace RPS.Tests
             Assert.Equal(50, state.Rows.Sum(x => x.GamesWon));
         }
 
-        public static IEvent[] GameEvents(Guid gameId, string title, string loosingPlayer, string winningPlayer)
+        public static IEvent[] GameEvents(Guid gameId, string title, string losingPlayer, string winningPlayer)
             => new IEvent[] {
-                new GameCreated { GameId = gameId, PlayerId = loosingPlayer, Rounds = 1, Title = title },
+                new GameCreated { GameId = gameId, PlayerId = losingPlayer, Rounds = 1, Title = title },
                 new GameStarted { GameId = gameId, PlayerId = winningPlayer },
                 new RoundStarted { GameId = gameId, Round = 1 },
-                new HandShown { GameId = gameId, Hand = Hand.Scissors, PlayerId = loosingPlayer },
+                new HandShown { GameId = gameId, Hand = Hand.Scissors, PlayerId = losingPlayer },
                 new HandShown { GameId = gameId, Hand = Hand.Rock, PlayerId = winningPlayer },
-                new RoundEnded { GameId = gameId, Round = 1, Looser = loosingPlayer, Winner = winningPlayer },
+                new RoundEnded { GameId = gameId, Round = 1, Loser = losingPlayer, Winner = winningPlayer },
                 new RoundStarted { GameId = gameId, Round = 2 },
-                new HandShown { GameId = gameId, Hand = Hand.Scissors, PlayerId = loosingPlayer },
+                new HandShown { GameId = gameId, Hand = Hand.Scissors, PlayerId = losingPlayer },
                 new HandShown { GameId = gameId, Hand = Hand.Paper, PlayerId = winningPlayer },
-                new RoundEnded { GameId = gameId, Round = 2, Looser = loosingPlayer, Winner = winningPlayer },
+                new RoundEnded { GameId = gameId, Round = 2, Loser = losingPlayer, Winner = winningPlayer },
                 new GameEnded { GameId = gameId }
             };
     }

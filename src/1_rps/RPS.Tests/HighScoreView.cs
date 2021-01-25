@@ -4,6 +4,7 @@
     {
         public HighScoreView When(IEvent @event) => this;
         public ScoreRow[] Rows { get; set; }
+
         public class ScoreRow
         {
             public int Rank { get; set; }

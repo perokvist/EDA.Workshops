@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Invariants.Tests
 {
-
     public interface IEvent
     {
         string SourceId { get; }
@@ -13,9 +12,9 @@ namespace Invariants.Tests
     public class JoinGame
     {
         public Guid GameId { get; set; }
-
         public string PlayerId { get; set; }
     }
+
     public class GameCreated : IEvent
     {
         public Guid GameId { get; set; }
@@ -63,5 +62,4 @@ namespace Invariants.Tests
         Started = 20,
         Ended = 50
     }
-
 }

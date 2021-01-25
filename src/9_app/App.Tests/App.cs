@@ -20,15 +20,15 @@ namespace App.Tests
 
         public async Task Dispatch(ICommand command)
         {
-            async Task subsciption(IEvent[] events) {
+            async Task subscription(IEvent[] events) {
                 _ = await store.AppendToStreamAsync("games", events);
                 await pub(events);
             };
 
             Func<InMemoryEventStore, Task> commandHandler = command switch
             {
-                CreateGame cmd => (store) => Execute(store, $"game-{cmd.GameId}", events => Game.Handle(cmd, events).ToArray(), subsciption),
-                JoinGame cmd => (store) => Execute<GameState>(store, $"game-{cmd.GameId}", state => Game.Handle(cmd, state).ToArray(), subsciption),
+                CreateGame cmd => (store) => Execute(store, $"game-{cmd.GameId}", events => Game.Handle(cmd, events).ToArray(), subscription),
+                JoinGame cmd => (store) => Execute<GameState>(store, $"game-{cmd.GameId}", state => Game.Handle(cmd, state).ToArray(), subscription),
                 _ => (store) => throw new ArgumentException($"Could not dispatch {command.GetType()}")
             };
 

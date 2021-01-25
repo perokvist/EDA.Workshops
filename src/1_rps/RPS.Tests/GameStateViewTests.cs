@@ -15,7 +15,7 @@ namespace RPS.Tests
                 new GameCreated { GameId = gameId, PlayerId = "test@tester.com", Rounds = 1, Title = "test game" },
             }.Rehydrate<GameState>();
 
-            //Then  
+            //Then
             Assert.Equal(GameStatus.ReadyToStart, state.Status);
         }
 
@@ -31,7 +31,7 @@ namespace RPS.Tests
                 new RoundStarted { GameId = gameId, Round = 1 }
             }.Rehydrate<GameState>();
 
-            //Then  
+            //Then
             Assert.Equal(GameStatus.Started, state.Status);
         }
 
@@ -47,11 +47,11 @@ namespace RPS.Tests
                 new RoundStarted { GameId = gameId, Round = 1 },
                 new HandShown { GameId = gameId, Hand = Hand.Paper, PlayerId = "lisa@tester.com" },
                 new HandShown { GameId = gameId, Hand = Hand.Rock, PlayerId = "alex@tester.com" },
-                new RoundEnded { GameId = gameId, Round = 1, Looser = "lisa@tester.com", Winner = "alex@tester.com" },
+                new RoundEnded { GameId = gameId, Round = 1, Loser = "lisa@tester.com", Winner = "alex@tester.com" },
                 new GameEnded { GameId = gameId }
             }.Rehydrate<GameState>();
 
-            //Then  
+            //Then
             Assert.Equal(GameStatus.Ended, state.Status);
         }
     }

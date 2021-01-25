@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patitioning.Tests
+﻿namespace Patitioning.Tests
 {
     public struct RoomDamageReported : IRoomEvent
     {
@@ -84,6 +80,4 @@ namespace Patitioning.Tests
     {
         string SubjectId { get; }
     }
-
-
 }

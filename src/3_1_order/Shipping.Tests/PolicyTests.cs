@@ -21,11 +21,11 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void PayedAndPickedIssueShip()
+        public void PaidAndPickedIssueShip()
         {
             //Given
             var state = new IEvent[] {
-                new PaymentRecieved()
+                new PaymentReceived()
             }.Rehydrate<Order>();
 
             //When
@@ -37,7 +37,7 @@ namespace Shipping.Tests
         }
 
         [Fact]
-        public void PickedAndPayedIssueShip()
+        public void PickedAndPaidIssueShip()
         {
             //Given
             var state = new IEvent[] {
@@ -45,7 +45,7 @@ namespace Shipping.Tests
             }.Rehydrate<Order>();
 
             //When
-            var cmd = ShippingPolicy.When(new PaymentRecieved(), state);
+            var cmd = ShippingPolicy.When(new PaymentReceived(), state);
 
             //Then
             Assert.NotNull(cmd);

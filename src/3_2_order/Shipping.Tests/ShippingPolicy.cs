@@ -20,10 +20,9 @@ namespace Shipping.Tests
             => f(history.ToArray());
     }
 
-
     public class ShippingPolicy
     {
-        public static ICommand When(PaymentRecieved @event) => new CompletePayment();
+        public static ICommand When(PaymentReceived @event) => new CompletePayment();
         public static ICommand When(GoodsPicked @event) => new CompletePacking();
     }
 
@@ -38,13 +37,12 @@ namespace Shipping.Tests
 
     public class Order
     {
-        public bool Payed;
+        public bool Paid;
         public bool Packed;
 
         public Order When(IEvent @event) => this;
 
-        public Order When(PaymentRecieved @event) => this;
+        public Order When(PaymentReceived @event) => this;
         public Order When(GoodsPicked @event) => this;
-
     }
 }

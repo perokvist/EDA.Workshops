@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Invariants.Tests
 {
@@ -17,6 +15,5 @@ namespace Invariants.Tests
             yield return new GameStarted { GameId = command.GameId, PlayerId = command.PlayerId };
             yield return new RoundStarted { GameId = command.GameId, Round = 1 };
         }
-
     }
 }

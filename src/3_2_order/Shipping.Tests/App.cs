@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Shipping.Tests
 {
@@ -11,7 +9,7 @@ namespace Shipping.Tests
         public IDictionary<string, string> Meta { get; set; }
     }
 
-    public class PaymentRecieved : IEvent
+    public class PaymentReceived : IEvent
     {
         public string SourceId => "payment.order";
         public IDictionary<string, string> Meta { get; set; }
@@ -26,6 +24,7 @@ namespace Shipping.Tests
 
     public class CompletePayment : ICommand
     { }
+
     public class CompletePacking : ICommand
     { }
 
@@ -44,7 +43,7 @@ namespace Shipping.Tests
     }
 
     public interface ICommand
-    {}
+    { }
 
     public interface IEvent
     {

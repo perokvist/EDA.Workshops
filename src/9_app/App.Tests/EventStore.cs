@@ -20,20 +20,20 @@ namespace App.Tests
         public Task<long> AppendToStreamAsync(string streamName, long version, IEvent[] events)
          => AppendToStreamAsync(streamName, (version, true), events);
 
-        public Task<long> AppendToStreamAsync(string streamName, (long version, bool check) concurreny, IEvent[] events)
+        public Task<long> AppendToStreamAsync(string streamName, (long version, bool check) concurrency, IEvent[] events)
          => Task.FromResult(innerStore.AddOrUpdate(
                     streamName,
-                    key => AppendToStream(Array.Empty<EventData>(), key, concurreny, events, () => store.Values.Count()),
-                    (key, value) => AppendToStream(value, key, concurreny, events, () => store.Values.Count()))
-             .LastOrDefault().Pipe(x => x == null ? concurreny.version : x.EventVersion)
+                    key => AppendToStream(Array.Empty<EventData>(), key, concurrency, events, () => store.Values.Count()),
+                    (key, value) => AppendToStream(value, key, concurrency, events, () => store.Values.Count()))
+             .LastOrDefault().Pipe(x => x == null ? concurrency.version : x.EventVersion)
              );
 
-        static EventData[] AppendToStream(EventData[] currentValue, string streamName, (long version, bool check) concurreny, IEvent[] events, Func<long> positionProvider)
+        static EventData[] AppendToStream(EventData[] currentValue, string streamName, (long version, bool check) concurrency, IEvent[] events, Func<long> positionProvider)
         {
             var lastVersion = currentValue.Any() ? currentValue.Last().EventVersion : 0;
 
-            if (concurreny.check && lastVersion != concurreny.version)
-                throw new DBConcurrencyException($"wrong version - expected {concurreny.version} but was {lastVersion} - in stream {streamName}");
+            if (concurrency.check && lastVersion != concurrency.version)
+                throw new DBConcurrencyException($"wrong version - expected {concurrency.version} but was {lastVersion} - in stream {streamName}");
 
             var duplicates = currentValue.Where(x => events.Any(e => e.EventId == x.EventId));
             if (duplicates.Any())
