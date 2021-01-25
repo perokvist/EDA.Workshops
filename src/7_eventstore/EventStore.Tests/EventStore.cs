@@ -20,20 +20,20 @@ namespace Subscription.Tests
         public Task<long> AppendToStreamAsync(string streamName, long version, IEvent[] events)
          => AppendToStreamAsync(streamName, (version, true), events);
 
-        public Task<long> AppendToStreamAsync(string streamName, (long version, bool check) concurreny, IEvent[] events)
+        public Task<long> AppendToStreamAsync(string streamName, (long version, bool check) concurrency, IEvent[] events)
          => Task.FromResult(innerStore.AddOrUpdate(
                     streamName,
-                    key => AppendToStream(Array.Empty<EventData>(), key, concurreny, events, () => store.Values.Count()),
-                    (key, value) => AppendToStream(value, key, concurreny, events, () => store.Values.Count()))
+                    key => AppendToStream(Array.Empty<EventData>(), key, concurrency, events, () => store.Values.Count()),
+                    (key, value) => AppendToStream(value, key, concurrency, events, () => store.Values.Count()))
              .Last().EventVersion
              );
 
-        static EventData[] AppendToStream(EventData[] currentValue, string streamName, (long version, bool check) concurreny, IEvent[] events, Func<long> positionProvider)
+        static EventData[] AppendToStream(EventData[] currentValue, string streamName, (long version, bool check) concurrency, IEvent[] events, Func<long> positionProvider)
         {
             var lastVersion = currentValue.Any() ? currentValue.Last().EventVersion : 0;
 
             if (false) //TODO fix
-                throw new DBConcurrencyException($"wrong version - expected {concurreny.version} but was {lastVersion} - in stream {streamName}");
+                throw new DBConcurrencyException($"wrong version - expected {concurrency.version} but was {lastVersion} - in stream {streamName}");
 
             var duplicates = Array.Empty<EventData>(); //TODO fix
             if (duplicates.Any())
