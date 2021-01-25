@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shipping.Tests
+﻿namespace Shipping.Tests
 {
     public class ShippingPolicy
     {
@@ -22,7 +18,5 @@ namespace Shipping.Tests
 
         public Order When(PaymentReceived @event) => this;
         public Order When(GoodsPicked @event) => this;
-
     }
-
 }

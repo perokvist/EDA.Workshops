@@ -13,5 +13,4 @@ namespace RPS.Tests
         public string SourceId => GameId.ToString();
         public IDictionary<string, string> Meta { get; set; }
     }
-
 }

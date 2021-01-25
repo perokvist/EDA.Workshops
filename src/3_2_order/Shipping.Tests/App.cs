@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Shipping.Tests
 {
@@ -26,6 +24,7 @@ namespace Shipping.Tests
 
     public class CompletePayment : ICommand
     { }
+
     public class CompletePacking : ICommand
     { }
 
@@ -44,7 +43,7 @@ namespace Shipping.Tests
     }
 
     public interface ICommand
-    {}
+    { }
 
     public interface IEvent
     {

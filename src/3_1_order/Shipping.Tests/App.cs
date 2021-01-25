@@ -28,7 +28,7 @@ namespace Shipping.Tests
     }
 
     public interface ICommand
-    {}
+    { }
 
     public interface IEvent
     {

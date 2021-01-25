@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Query.Tests
@@ -30,15 +29,12 @@ namespace Query.Tests
         public GameStatus Status { get; set; } = GameStatus.Started;
         public string SourceId => GameId.ToString();
         public Guid EventId { get; set; } = Guid.NewGuid();
-
     }
 
     public class GameStarted : IEvent
     {
         public Guid GameId { get; set; }
-
         public string PlayerId { get; set; }
-
         public string SourceId => GameId.ToString();
         public Guid EventId { get; set; } = Guid.NewGuid();
     }
@@ -46,9 +42,7 @@ namespace Query.Tests
     public class GameEnded : IEvent
     {
         public Guid GameId { get; set; }
-
         public string SourceId => GameId.ToString();
-
         public Guid EventId { get; set; } = Guid.NewGuid();
     }
 

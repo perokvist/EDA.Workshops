@@ -4,5 +4,4 @@
     {
         public GameState When(IEvent @event) => this;
     }
-
 }

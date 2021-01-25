@@ -20,7 +20,6 @@ namespace Shipping.Tests
             => f(history.ToArray());
     }
 
-
     public class ShippingPolicy
     {
         public static ICommand When(PaymentReceived @event) => new CompletePayment();
@@ -45,6 +44,5 @@ namespace Shipping.Tests
 
         public Order When(PaymentReceived @event) => this;
         public Order When(GoodsPicked @event) => this;
-
     }
 }
