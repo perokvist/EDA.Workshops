@@ -9,7 +9,7 @@ namespace RPS.Tests
     public class HighScoreViewTests
     {
         [Fact]
-        public void Highscore()
+        public void HighScore()
         {
             var playerOne = "alex@rpsgame.com";
             var playerTwo = "lisa@rpsgame.com";

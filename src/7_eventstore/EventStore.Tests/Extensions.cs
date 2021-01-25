@@ -8,7 +8,7 @@ namespace Subscription.Tests
 {
     public static class Extensions
     {
-        public static Task SubscribeByCatagory(this InMemoryEventStore store, string category, CancellationToken token, Func<EventData, Task> f)
+        public static Task SubscribeByCategory(this InMemoryEventStore store, string category, CancellationToken token, Func<EventData, Task> f)
             => store.SubscribeAllAsync(async re =>
             {
                 if (re.StreamName.StartsWith($"{category}-"))

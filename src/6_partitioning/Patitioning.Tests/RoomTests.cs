@@ -23,10 +23,10 @@ namespace Patitioning.Tests
             store.Append(history);
 
             //Then
-            var checkedin = store.GetCheckedInRoomIds();
+            var checkedIn = store.GetCheckedInRoomIds();
 
-            Assert.True(checkedin.Count() == 1);
-            Assert.True(checkedin.First() == "102");
+            Assert.True(checkedIn.Count() == 1);
+            Assert.True(checkedIn.First() == "102");
         }
 
         [Fact]
@@ -47,10 +47,10 @@ namespace Patitioning.Tests
             store.Append(history);
 
             //Then
-            var checkedin = store.GetRoomsToClean();
+            var checkedIn = store.GetRoomsToClean();
 
-            Assert.True(checkedin.Count() == 1);
-            Assert.True(checkedin.First() == "205");
+            Assert.True(checkedIn.Count() == 1);
+            Assert.True(checkedIn.First() == "205");
         }
     }
 }

@@ -12,10 +12,10 @@ namespace Subscription.Tests
     {
         [Trait("Category", "Integration")]
         [Fact]
-        public async Task SubscribeByCatagoryAsync()
+        public async Task SubscribeByCategoryAsync()
         {
             var store = new InMemoryEventStore();
-            await store.SubscribeByCatagory("game", CancellationToken.None, ed => store.AppendToStreamAsync("projection-ongoing-games", new[] { ed.Event }));
+            await store.SubscribeByCategory("game", CancellationToken.None, ed => store.AppendToStreamAsync("projection-ongoing-games", new[] { ed.Event }));
 
             var e1 = new GameStarted { GameId = Guid.NewGuid(), PlayerId = "lisa@rps.com" };
             await store.AppendToStreamAsync($"game-{e1.GameId}", new[] { e1 });

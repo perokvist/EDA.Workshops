@@ -20,14 +20,14 @@ namespace Login.Tests
 
         public void Handle(Login command)
         {
-            if (history.ToManyAttempts(timeProvider))
-                throw new AuthenticationException("To many attempts");
+            if (history.TooManyAttempts(timeProvider))
+                throw new AuthenticationException("Too many attempts");
         }
     }
 
     public static class LoginRules
     {
-        public static bool ToManyAttempts(this IEnumerable<IEvent> events, Func<DateTime> timeProvider)
+        public static bool TooManyAttempts(this IEnumerable<IEvent> events, Func<DateTime> timeProvider)
             => events
             .OfType<AuthenticationAttemptFailed>()
             //TODO
