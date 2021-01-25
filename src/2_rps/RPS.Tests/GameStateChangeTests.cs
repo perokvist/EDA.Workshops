@@ -104,6 +104,7 @@ namespace RPS.Tests
                 );
 
             //Then  
+            Assert.True(events.OfType<RoundEnded>().Any(), "No round end");
             Assert.True(events.OfType<RoundEnded>().All(x => x.Winner == "test@tester.com"), "Wrong winner");
             Assert.True(events.OfType<GameEnded>().Any(), "No game end");
         }
