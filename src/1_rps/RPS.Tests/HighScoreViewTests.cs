@@ -32,7 +32,7 @@ namespace RPS.Tests
 
         public static IEvent[] GameEvents(Guid gameId, string title, string losingPlayer, string winningPlayer)
             => new IEvent[] {
-                new GameCreated { GameId = gameId, PlayerId = losingPlayer, Rounds = 1, Title = title },
+                new GameCreated { GameId = gameId, PlayerId = losingPlayer, Rounds = 2, Title = title },
                 new GameStarted { GameId = gameId, PlayerId = winningPlayer },
                 new RoundStarted { GameId = gameId, Round = 1 },
                 new HandShown { GameId = gameId, Hand = Hand.Scissors, PlayerId = losingPlayer },
