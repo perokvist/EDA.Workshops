@@ -115,9 +115,28 @@ let newState = List.fold apply state events
 
 ### Kotlin
 
+In Kotlin we use (left) fold.
+
 ```kotlin
 events.fold(initialState) { state, event -> apply(state, event)}
 ```
+
+Apply (partial) could look something like this;
+
+```kotlin
+    when (currentState) {
+        NotStarted -> if (event is GameStarted) Started(event.gameId, Turn(event.firstPlayerId, event.playerCount, Clockwise), event.firstCard) else invalidStateTransition()
+        is Started -> when (event) {
+            is GameStarted -> invalidStateTransition()
+            is CardPlayed -> currentState.copy(turn = currentState.turn.setPlayer(event.nextPlayerId), topCard = event.card)
+            is PlayerPlayedAtWrongTurn -> currentState
+            is PlayerPlayedWrongCard -> currentState
+            is DirectionChanged -> currentState.copy(turn = currentState.turn.setDirection(event.direction))
+        }
+    }
+```
+
+- [Occurent Uno sample](https://github.com/johanhaleby/occurrent/blob/master/example/domain/uno/model/src/main/kotlin/org/occurrent/example/domain/uno/Uno.kt#L114)
 
 ## Exercise #1-2
 
