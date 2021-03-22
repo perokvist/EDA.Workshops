@@ -113,6 +113,12 @@ In F# we use (left) fold.
 let newState = List.fold apply state events 
 ```
 
+### Kotlin
+
+```kotlin
+events.fold(initialState) { state, event -> apply(state, event)}
+```
+
 ## Exercise #1-2
 
 Get all the tests in "[HighScoreViewTests](RPS.Tests/HighScoreViewTests.cs)" green by adding overload to "[HighScoreView](RPS.Tests/HighScoreView.cs)"
